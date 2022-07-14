@@ -9,8 +9,8 @@ import { Button } from '../Forms'
 import { Icon } from '../Icon'
 import { PreventCloseContext } from '../PreventCloseContext'
 import { Stack } from '../Stack'
-import { ThemeSchemeContext, TitleThemeSchemeContext } from './ThemeSchemeContext'
-import { ThemeScheme } from './Types'
+import { ThemeScheme, ThemeSchemeContext, TitleThemeSchemeContext } from '../View'
+
 export interface LayoutChromeProps extends ThemeScheme {
 	children?: ReactNode
 	navigation?: ReactNode

@@ -1,6 +1,6 @@
 import { Component, EntityAccessor } from '@contember/binding'
-import { FieldContainer, FieldContainerProps, FieldErrors, SelectCreateNewWrapper } from '@contember/ui'
-import { ComponentType, FunctionComponent, memo, MouseEventHandler, useCallback } from 'react'
+import { DropdownContentContainerContext, FieldContainer, FieldContainerProps, FieldErrors, SelectCreateNewWrapper } from '@contember/ui'
+import { ComponentType, FunctionComponent, memo, MouseEventHandler, useCallback, useContext } from 'react'
 import type { MultiValueGenericProps, MultiValueProps, Props as SelectProps } from 'react-select'
 import Select, { ActionMeta, components } from 'react-select'
 import { useLabelMiddleware } from '../../environment/LabelMiddleware'
@@ -92,6 +92,9 @@ export const MultiSelectFieldInner = typedMemo(
 			onMove?.(oldIndex, newIndex)
 		}, [onMove])
 
+		const contentContainerFromContent = useContext(DropdownContentContainerContext)
+		const contentContainer = contentContainerFromContent || document.body
+
 		return (
 			<FieldContainer
 				{...fieldContainerProps}
@@ -114,7 +117,7 @@ export const MultiSelectFieldInner = typedMemo(
 								MultiValueLabel: SortableMultiValueLabel,
 							}}
 						/>
-						: <Select {...allSelectProps}/>
+						: <Select menuPortalTarget={contentContainer} {...allSelectProps}/>
 					}
 				</SelectCreateNewWrapper>
 			</FieldContainer>

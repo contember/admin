@@ -1,9 +1,9 @@
 import { Component, Environment, Field, FieldAccessor, FieldBasicProps, FieldValue } from '@contember/binding'
-import type { FieldContainerProps } from '@contember/ui'
+import type { FieldContainerOwnProps, FieldContainerProps } from '@contember/ui'
 import type { NamedExoticComponent, ReactNode } from 'react'
 import { SimpleRelativeSingleFieldProxy } from './SimpleRelativeFieldProxy'
 
-export type SimpleRelativeSingleFieldProps = FieldBasicProps & Omit<FieldContainerProps, 'children'>
+export type SimpleRelativeSingleFieldProps = FieldBasicProps & Omit<FieldContainerOwnProps, 'children'>
 
 export interface SimpleRelativeSingleFieldMetadata<Value extends FieldValue = FieldValue> {
 	field: FieldAccessor<Value>

@@ -21,31 +21,26 @@ import { SortableRepeaterContainer } from './SortableRepeaterContainer'
 import { SortableRepeaterItem } from './SortableRepeaterItem'
 import { SortableRepeaterItemHandle } from './SortableRepeaterItemHandle'
 
-// TODO alt content for collapsing
+// TODO: alt content for collapsing
 export interface RepeaterInnerProps<ContainerExtraProps, ItemExtraProps>
 	extends RepeaterFieldContainerPublicProps,
-		Omit<RepeaterItemProps, 'children' | 'canBeRemoved' | 'label'> {
-	accessor: EntityListAccessor
-	/**
-	 * @deprecated Use label instead
-	 */
-	boxLabel?: ReactNode
-	label: ReactNode
-	children?: ReactNode
-
-	sortableBy?: SugaredFieldProps['field']
-
-	enableRemoving?: boolean
-
-	containerComponent?: ComponentType<RepeaterFieldContainerProps & ContainerExtraProps>
-	containerComponentExtraProps?: ContainerExtraProps
-
-	itemComponent?: ComponentType<RepeaterItemProps & ItemExtraProps>
-	itemComponentExtraProps?: ItemExtraProps
-
-	unstable__sortAxis?: 'x' | 'y' | 'xy'
-	useDragHandle?: boolean
-}
+	Pick<RepeaterItemProps, 'dragHandleComponent' | 'removalType' | 'compact' | 'direction'> {
+		accessor: EntityListAccessor
+		/**
+	 	 * @deprecated Use label instead
+	 	 */
+		boxLabel?: ReactNode
+		children?: ReactNode
+		containerComponent?: ComponentType<RepeaterFieldContainerProps & ContainerExtraProps>
+		containerComponentExtraProps?: ContainerExtraProps
+		enableRemoving?: boolean
+		itemComponent?: ComponentType<RepeaterItemProps & ItemExtraProps>
+		itemComponentExtraProps?: ItemExtraProps
+		label: ReactNode
+		sortableBy?: SugaredFieldProps['field']
+		unstable__sortAxis?: 'x' | 'y' | 'xy'
+		useDragHandle?: boolean
+	}
 
 type NonStaticPropNames = 'accessor'
 
@@ -96,6 +91,8 @@ export const RepeaterInner = Component<RepeaterInnerProps<any, any>, NonStaticPr
 						<Entity accessor={entity} key={entity.key}>
 							<Item
 								{...props.itemComponentExtraProps!}
+								compact={props.compact}
+								scrollable={props.scrollable}
 								label={label ? `${label} #${i + 1}` : `#${i + 1}`}
 								removalType={removalType}
 								canBeRemoved={itemRemovingEnabled}
@@ -137,6 +134,8 @@ export const RepeaterInner = Component<RepeaterInnerProps<any, any>, NonStaticPr
 							<Entity accessor={entity}>
 								<Item
 									{...props.itemComponentExtraProps!}
+									compact={props.compact}
+									scrollable={props.scrollable}
 									label={label ? `${label} #${i + 1}` : `#${i + 1}`}
 									removalType={removalType}
 									canBeRemoved={itemRemovingEnabled}

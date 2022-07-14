@@ -1,6 +1,6 @@
 import { Component } from '@contember/binding'
-import { FieldContainer, FieldContainerProps, FieldErrors, SelectCreateNewWrapper } from '@contember/ui'
-import { FunctionComponent, memo } from 'react'
+import { DropdownContentContainerContext, FieldContainer, FieldContainerOwnProps, FieldErrors, SelectCreateNewWrapper } from '@contember/ui'
+import { FunctionComponent, memo, useContext } from 'react'
 import type { Props as SelectProps } from 'react-select'
 import Select from 'react-select'
 import { useLabelMiddleware } from '../../environment/LabelMiddleware'
@@ -30,7 +30,7 @@ export const SelectField: FunctionComponent<SelectFieldProps> = Component(
 	'SelectField',
 )
 
-export interface SelectFieldInnerPublicProps extends Omit<FieldContainerProps, 'children'> {
+export interface SelectFieldInnerPublicProps extends Omit<FieldContainerOwnProps, 'children'> {
 	placeholder?: string
 	allowNull?: boolean
 	reactSelectProps?: Partial<SelectProps<any>>
@@ -65,6 +65,8 @@ export const SelectFieldInner = memo(
 		})
 
 		const labelMiddleware = useLabelMiddleware()
+		const contentContainerFromContent = useContext(DropdownContentContainerContext)
+		const contentContainer = contentContainerFromContent || document.body
 
 		return (
 			<FieldContainer
@@ -76,6 +78,7 @@ export const SelectFieldInner = memo(
 					<Select
 						{...selectProps}
 						menuPlacement="auto"
+						menuPortalTarget={contentContainer}
 						isClearable={allowNull === true}
 						value={currentValue}
 						isLoading={isLoading}

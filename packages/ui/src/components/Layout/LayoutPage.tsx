@@ -4,10 +4,10 @@ import { useClassNamePrefix } from '../../auxiliary'
 import { toEnumClass, toSchemeClass, toThemeClass } from '../../utils'
 import { SectionTabs } from '../SectionTabs'
 import { TitleBar, TitleBarProps } from '../TitleBar'
+import { ThemeScheme, useThemeScheme } from '../View'
 import { LayoutPageAside } from './LayoutPageAside'
 import { LayoutPageContent, LayoutPageContentProps } from './LayoutPageContent'
-import { useThemeScheme } from './ThemeSchemeContext'
-import { ThemeScheme } from './Types'
+
 export interface LayoutPageProps extends Omit<TitleBarProps, 'after' | 'children'>, ThemeScheme {
 	afterTitle?: TitleBarProps['after']
 	children?: ReactNode

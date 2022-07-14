@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { ThemeScheme } from './Types'
+import { ThemeScheme } from '../View/Types'
 
 export const ThemeSchemeContext = createContext<ThemeScheme>({})
 export const TitleThemeSchemeContext = createContext<ThemeScheme>({})

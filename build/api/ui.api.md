@@ -9,6 +9,7 @@
 import { AllHTMLAttributes } from 'react';
 import { AnimationEventHandler } from 'react';
 import { AriaRole } from 'react';
+import { ClassAttributes } from 'react';
 import { ClipboardEventHandler } from 'react';
 import { ComponentType } from 'react';
 import { CompositionEventHandler } from 'react';
@@ -40,6 +41,7 @@ import { ReactNode } from 'react';
 import { ReactPortal } from 'react';
 import { Ref } from 'react';
 import { RefAttributes } from 'react';
+import { RefCallback } from 'react';
 import { RefObject } from 'react';
 import { SyntheticEvent } from 'react';
 import { TextareaAutosizeProps } from 'react-textarea-autosize';
@@ -69,12 +71,20 @@ export const Aether: MemoExoticComponent<({ children, className, ...divProps }: 
 export type AetherProps = JSX.IntrinsicElements['div'];
 
 // @public (undocumented)
+export type AlignEnum = typeof supportedClassNameEnums['align'][number];
+
+// @public (undocumented)
 export type Alignment = Default | 'alignStart' | 'alignCenter' | 'alignEnd';
 
 // Warning: (ae-forgotten-export) The symbol "All" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export type AllControlProps<V> = Omit<All<ControlProps<V>>, 'type'>;
+
+// Warning: (ae-forgotten-export) The symbol "DivProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type AllViewProps = Pick<DivProps, PublicContainerPropNames | 'contentEditable'> & ViewProps;
 
 // @public (undocumented)
 export type AllVisuallyDependentControlProps = Omit<All<VisuallyDependentControlProps>, 'type'>;
@@ -114,16 +124,34 @@ export function assertTimeString(value: unknown): asserts value is TimeInputStri
 // @public (undocumented)
 export function assertWeekInputString(value: unknown): asserts value is WeekInputString;
 
+// @public (undocumented)
+export type BackgroundColorEnum = typeof supportedClassNameEnums['backgroundColor'][number];
+
 // Warning: (ae-forgotten-export) The symbol "BaseButtonProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export const BaseButton: MemoExoticComponent<ForwardRefExoticComponent<BaseButtonProps & RefAttributes<any>>>;
 
 // @public (undocumented)
+export type BasisEnum = typeof supportedClassNameEnums['basis'][number];
+
+// @public (undocumented)
 export type BlueprintIconName = IconName;
 
 // @public (undocumented)
-export const Box: MemoExoticComponent<ForwardRefExoticComponent<Pick<BoxProps, "children" | "isActive" | "slot" | "style" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "direction" | "gap" | "padding" | "heading" | "actions" | "distinction" | "intent"> & RefAttributes<HTMLDivElement>>>;
+export type BorderColorEnum = typeof supportedClassNameEnums['borderColor'][number];
+
+// @public (undocumented)
+export type BorderEnum = typeof supportedClassNameEnums['border'][number];
+
+// @public (undocumented)
+export type BorderRadiusEnum = typeof supportedClassNameEnums['borderRadius'][number];
+
+// @public (undocumented)
+export type BorderWidthEnum = typeof supportedClassNameEnums['borderWidth'][number];
+
+// @public (undocumented)
+export const Box: MemoExoticComponent<ForwardRefExoticComponent<BoxProps & RefAttributes<HTMLDivElement>>>;
 
 // @public (undocumented)
 export type BoxDepth = 1 | 2 | 3 | 4 | 5 | 6;
@@ -132,17 +160,13 @@ export type BoxDepth = 1 | 2 | 3 | 4 | 5 | 6;
 export type BoxDistinction = Default | 'seamless';
 
 // @public (undocumented)
-export interface BoxOwnProps {
+export interface BoxOwnProps extends Omit<ViewProps, 'theme' | 'themeContent' | 'themeControls' | 'padding'> {
     // (undocumented)
     actions?: ReactNode;
     // (undocumented)
-    children?: ReactNode;
-    // (undocumented)
-    direction?: StackProps['direction'];
+    children?: ViewContainerProps['children'];
     // (undocumented)
     distinction?: BoxDistinction;
-    // (undocumented)
-    gap?: Size | 'none';
     // (undocumented)
     heading?: ReactNode;
     // (undocumented)
@@ -154,7 +178,7 @@ export interface BoxOwnProps {
 }
 
 // @public (undocumented)
-export interface BoxProps extends BoxOwnProps, Omit<NativeProps<HTMLDivElement>, 'children'> {
+export interface BoxProps extends BoxOwnProps, Omit<ViewContainerProps, 'children'> {
 }
 
 // @public (undocumented)
@@ -266,7 +290,7 @@ export type CardProps = Omit<CommonCardProps, 'type'> & Omit<NativeProps<HTMLDiv
 };
 
 // @public (undocumented)
-export const Checkbox: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<boolean> & ControlValueProps<boolean> & {
+export const Checkbox: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<boolean> & {
 CheckboxButtonComponent?: (({ id, checked, indeterminate, ...props }: CheckboxButtonProps) => JSX.Element) | undefined;
 children?: undefined;
 } & RestHTMLCheckboxProps & RefAttributes<HTMLInputElement>>>;
@@ -317,7 +341,10 @@ export interface CollapsibleProps {
 export type CollapsibleTransition = Default | 'topInsert' | 'leftInsert' | 'rightInsert' | 'bottomInsert' | 'fade';
 
 // @public (undocumented)
-export const ColorInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export type ColorEnum = typeof supportedClassNameEnums['color'][number];
+
+// @public (undocumented)
+export const ColorInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -379,14 +406,6 @@ export interface ContentStatusProps {
 }
 
 // @public (undocumented)
-export interface ControlConstraintProps<V> {
-    // (undocumented)
-    max?: V | null;
-    // (undocumented)
-    min?: V | null;
-}
-
-// @public (undocumented)
 export interface ControlDisplayProps {
     // (undocumented)
     className?: HTMLAttributes<HTMLElement>['className'];
@@ -396,10 +415,6 @@ export interface ControlDisplayProps {
     id?: string;
     // (undocumented)
     intent?: Intent;
-    // (undocumented)
-    name?: string;
-    // (undocumented)
-    placeholder?: string | null;
     // (undocumented)
     scheme?: Scheme;
     // (undocumented)
@@ -422,7 +437,7 @@ export interface ControlFocusProps {
 }
 
 // @public (undocumented)
-export type ControlProps<V> = ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<V> & ControlValueProps<V>;
+export type ControlProps<V> = ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<V>;
 
 // @public (undocumented)
 export type ControlPropsKeys<V> = keyof ControlProps<V>;
@@ -450,15 +465,23 @@ export interface ControlValueProps<V> {
     // (undocumented)
     defaultValue?: V | null | undefined;
     // (undocumented)
+    max?: V | null;
+    // (undocumented)
+    min?: V | null;
+    // (undocumented)
+    name?: string;
+    // (undocumented)
     notNull?: boolean;
     // (undocumented)
     onChange?: (value?: V | null) => void;
+    // (undocumented)
+    placeholder?: string | null;
     // (undocumented)
     value?: V | null;
 }
 
 // @public (undocumented)
-export const DateInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const DateInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -472,12 +495,12 @@ export type DateInputString = string;
 export const DateInputStringRegExp: RegExp;
 
 // @public (undocumented)
-export const DateTimeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const DateTimeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
 // @public (undocumented)
-export const DateTimeInputFallback: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const DateTimeInputFallback: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -635,6 +658,12 @@ export interface DimensionSwitcherValue {
         active: boolean;
     }[];
 }
+
+// @public (undocumented)
+export type DirectionEnum = typeof supportedClassNameEnums['direction'][number];
+
+// @public (undocumented)
+export type DisplayEnum = typeof supportedClassNameEnums['display'][number];
 
 // @public (undocumented)
 export const Divider: MemoExoticComponent<({ className, gap, ...rest }: DividerProps) => JSX.Element>;
@@ -1411,10 +1440,13 @@ export interface EditorToolbarProps {
 }
 
 // @public (undocumented)
+export type ElevationEnum = typeof supportedClassNameEnums['elevation'][number];
+
+// @public (undocumented)
 const ellipsis: string[];
 
 // @public (undocumented)
-export const EmailInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const EmailInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1434,36 +1466,32 @@ export interface ErrorListProps {
 export type ErrorType = Error | unknown;
 
 // @public (undocumented)
-export const FieldContainer: MemoExoticComponent<({ children, className, description, direction, errors, gap, label, labelDescription, labelPosition, width, required, size, useLabelElement, style, }: FieldContainerProps) => JSX.Element>;
+export const FieldContainer: MemoExoticComponent<({ basis, children, className, color, description, direction, distinction, errors, evenly, footer, gap, id, label, labelDescription, labelPosition, maxHeight, maxWidth, required, scrollable, span, shrink, spanRows, states, style, theme, themeContent, themeControls, useLabelElement, width, wrap, ...rest }: FieldContainerProps) => JSX.Element>;
 
 // @public (undocumented)
 export type FieldContainerLabelPosition = Default | 'labelLeft' | 'labelRight' | 'labelInlineLeft' | 'labelInlineRight';
 
 // @public (undocumented)
-export interface FieldContainerProps extends ErrorListProps, Pick<NativeProps<HTMLDivElement>, 'className' | 'style'> {
-    // (undocumented)
-    children: ReactNode;
-    // (undocumented)
+export type FieldContainerOwnProps = ViewContainerProps & ErrorListProps & Partial<Pick<StackOwnProps, 'direction' | 'evenly' | 'gap' | 'wrap'>> & {
+    states?: ('hover' | 'focus')[];
+    distinction?: ControlDistinction;
     description?: ReactNode;
-    // (undocumented)
-    direction?: StackProps['direction'];
-    // (undocumented)
-    gap?: Size | 'none';
-    // (undocumented)
+    footer?: ReactNode;
     label: ReactNode;
-    // (undocumented)
     labelDescription?: ReactNode;
-    // (undocumented)
     labelPosition?: FieldContainerLabelPosition;
-    // (undocumented)
     required?: boolean;
-    // (undocumented)
+    scrollable?: boolean;
     size?: Size;
-    // (undocumented)
     useLabelElement?: boolean;
-    // (undocumented)
     width?: 'column' | 'fluid' | 'none';
-}
+};
+
+// @public (undocumented)
+export type FieldContainerProps = FieldContainerOwnProps & FieldContainerViewProps;
+
+// @public (undocumented)
+export type FieldContainerViewProps = Omit<ViewProps, 'gap' | 'direction' | keyof ViewContainerProps>;
 
 // @public (undocumented)
 export interface FieldError {
@@ -1525,7 +1553,7 @@ export interface FilePreviewProps {
 export function flipValue<V extends any = any, T extends any = boolean, F extends any = boolean>(value: V, truthy?: T, falsy?: F): boolean | NonNullable<T> | NonNullable<F> | undefined;
 
 // @public (undocumented)
-export const FloatInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<number> & ControlValueProps<number> & {
+export const FloatInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<number> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1536,7 +1564,13 @@ export type FloatInputProps = TextInputProps<number>;
 export const forceReflow: (element: HTMLElement | null) => void;
 
 // @public (undocumented)
+export function fromBooleanValue(value?: boolean | null): string;
+
+// @public (undocumented)
 const gallery: string[];
+
+// @public (undocumented)
+export type GapEnum = typeof supportedClassNameEnums['gap'][number];
 
 // @public (undocumented)
 export const Grid: MemoExoticComponent<ForwardRefExoticComponent<Pick<GridProps, "children" | "slot" | "style" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "columnWidth"> & RefAttributes<HTMLDivElement>>>;
@@ -1609,7 +1643,7 @@ export interface HeadingProps extends Omit<DetailedHTMLProps<HTMLAttributes<HTML
 }
 
 // @public (undocumented)
-export const HiddenInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const HiddenInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1674,7 +1708,7 @@ const image: string[];
 export type Intent = Default | 'primary' | 'secondary' | 'tertiary' | 'positive' | 'success' | 'warn' | 'danger';
 
 // @public (undocumented)
-export const InternalTextInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const InternalTextInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1683,6 +1717,9 @@ export const isSpecialLinkClick: (e: MouseEvent) => boolean;
 
 // @public (undocumented)
 export type Justification = Default | 'justifyStart' | 'justifyCenter' | 'justifyEnd';
+
+// @public (undocumented)
+export type JustifyEnum = typeof supportedClassNameEnums['justify'][number];
 
 // @public (undocumented)
 export const Label: MemoExoticComponent<({ className, isDisabled, isActive, isFocused, isHover, children, size, weight, }: LabelProps) => JSX.Element>;
@@ -1715,8 +1752,6 @@ export const Layout: MemoExoticComponent<({ className, children, sidebarHeader, 
 // @public (undocumented)
 export const LayoutChrome: MemoExoticComponent<({ children, navigation, pageScheme, pageTheme, pageThemeContent, pageThemeControls, scheme, sidebarFooter, sidebarHeader, switchers, theme, themeContent, themeControls, titleScheme, titleTheme, titleThemeContent, titleThemeControls, }: LayoutChromeProps) => JSX.Element>;
 
-// Warning: (ae-forgotten-export) The symbol "ThemeScheme" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface LayoutChromeProps extends ThemeScheme {
     // (undocumented)
@@ -1847,6 +1882,12 @@ export interface LogoSymbolProps {
 }
 
 // @public (undocumented)
+export type MaxHeight = typeof supportedClassNameEnums['maxHeight'][number];
+
+// @public (undocumented)
+export type MaxWidth = typeof supportedClassNameEnums['maxWidth'][number];
+
+// @public (undocumented)
 const megaphone: string[];
 
 // @public (undocumented)
@@ -1904,7 +1945,13 @@ export interface MessageProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-export const MonthInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export type MinHeight = typeof supportedClassNameEnums['minHeight'][number];
+
+// @public (undocumented)
+export type MinWidth = typeof supportedClassNameEnums['minWidth'][number];
+
+// @public (undocumented)
+export const MonthInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1941,7 +1988,7 @@ const newNote: string[];
 export function noop(): void;
 
 // @public (undocumented)
-export const NumberInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<number> & ControlValueProps<number> & {
+export const NumberInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<number> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -1950,6 +1997,9 @@ export type NumberInputProps = TextInputProps<number>;
 
 // @public (undocumented)
 export type OpenDialog<Result> = (options: DialogSettings<Result>) => Promise<Result | undefined>;
+
+// @public (undocumented)
+export type PaddingEnum = typeof supportedClassNameEnums['padding'][number];
 
 // @public @deprecated (undocumented)
 export const PageLayoutContent: MemoExoticComponent<({ children, layout, pageContentLayout }: LayoutPageContentProps) => JSX.Element>;
@@ -1975,7 +2025,7 @@ export interface ParsedStackFrame {
 export type ParsedStackTrace = ParsedStackFrame[];
 
 // @public (undocumented)
-export const PasswordInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const PasswordInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2017,6 +2067,12 @@ export interface ProgressBarProps {
     // (undocumented)
     progress: number;
 }
+
+// @public (undocumented)
+export type PublicContainerPropNames = 'style' | 'children' | 'className' | 'id';
+
+// @public (undocumented)
+export type PurposeEnum = typeof supportedClassNameEnums['purpose'][number];
 
 // @public (undocumented)
 const questionAnswer: string[];
@@ -2067,7 +2123,7 @@ export interface RadioProps {
 export const randomId: () => string;
 
 // @public (undocumented)
-export const RangeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const RangeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2081,23 +2137,30 @@ export interface RenderDialogContentProps<Result> {
 }
 
 // @public (undocumented)
-export const RepeaterItemContainer: MemoExoticComponent<({ actions, children, gap, label, dragHandleComponent: Handle }: RepeaterItemContainerProps) => JSX.Element>;
+export const RepeaterItemContainer: MemoExoticComponent<({ actions, children, className, compact, gap, direction, dragHandleComponent: Handle, label, ...props }: RepeaterItemContainerProps) => JSX.Element>;
 
 // @public (undocumented)
-export interface RepeaterItemContainerProps {
+export interface RepeaterItemContainerOwnProps {
     // (undocumented)
     actions?: ReactNode;
     // (undocumented)
     children: ReactNode;
     // (undocumented)
+    compact?: boolean;
+    // (undocumented)
+    direction?: StackOwnProps['direction'];
+    // (undocumented)
     dragHandleComponent?: ComponentType<{
         children: ReactNode;
     }>;
     // (undocumented)
-    gap?: Size;
-    // (undocumented)
     label?: ReactNode;
+    // (undocumented)
+    scrollable?: boolean;
 }
+
+// @public (undocumented)
+export type RepeaterItemContainerProps = RepeaterItemContainerOwnProps & BoxOwnProps;
 
 // @public (undocumented)
 export interface RestHTMLCheckboxProps extends Omit<AllHTMLAttributes<HTMLInputElement>, ControlPropsKeys<boolean> | 'checked' | 'children'> {
@@ -2157,7 +2220,7 @@ export interface SeamlessDropdownProps {
 }
 
 // @public (undocumented)
-export const SearchInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const SearchInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2165,7 +2228,7 @@ withTopToolbar?: boolean | undefined;
 export type SearchInputProps = TextInputProps;
 
 // @public (undocumented)
-export const Section: MemoExoticComponent<ForwardRefExoticComponent<Pick<SectionProps, "children" | "slot" | "style" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "heading" | "actions"> & RefAttributes<HTMLElement>>>;
+export const Section: MemoExoticComponent<ForwardRefExoticComponent<Pick<SectionProps, "color" | "hidden" | "style" | "children" | "className" | "id" | "slot" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "heading" | "actions"> & RefAttributes<HTMLElement>>>;
 
 // @public (undocumented)
 export interface SectionOwnProps {
@@ -2219,10 +2282,13 @@ export type SelectProps<V> = Omit<ControlProps<V>, 'min' | 'max'> & RestHTMLSele
 };
 
 // @public (undocumented)
+export type ShrinkEnum = typeof supportedClassNameEnums['shrink'][number];
+
+// @public (undocumented)
 export type Size = Default | 'small' | 'large';
 
 // @public (undocumented)
-export const SlugInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const SlugInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & {
 link?: string | undefined;
@@ -2249,48 +2315,61 @@ export interface SpacerProps extends Omit<NativeProps<HTMLDivElement>, 'children
 }
 
 // @public (undocumented)
+export type SpanEnum = typeof supportedClassNameEnums['span'][number];
+
+// @public (undocumented)
+export type SpanRowsEnum = typeof supportedClassNameEnums['spanRows'][number];
+
+// @public (undocumented)
 export const Spinner: MemoExoticComponent<() => JSX.Element>;
 
 // @public (undocumented)
 export function splitDatetime(datetime: string | null | undefined): string[];
 
 // @public (undocumented)
-export const Stack: MemoExoticComponent<ForwardRefExoticComponent<Pick<StackProps, "children" | "slot" | "style" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "align" | "basis" | "evenly" | "direction" | "gap" | "grow" | "justify" | "shrink" | "wrap"> & RefAttributes<HTMLDivElement>>>;
+export const Stack: MemoExoticComponent<ForwardRefExoticComponent<Pick<StackProps, "border" | "wrap" | "align" | "backgroundColor" | "basis" | "borderColor" | "borderWidth" | "direction" | "elevation" | "gap" | "justify" | "maxHeight" | "minHeight" | "maxWidth" | "minWidth" | "padding" | "borderRadius" | "purpose" | "shrink" | "span" | "userSelect" | "key" | keyof HTMLAttributes<HTMLDivElement> | "scheme" | "theme" | "themeContent" | "themeControls" | "active" | "activeProps" | "component" | "focus" | "focusProps" | "hover" | "hoverProps" | "gapHorizontal" | "gapVertical" | "evenly"> & RefAttributes<HTMLDivElement>>>;
 
 // @public (undocumented)
-export interface StackOwnProps {
-    // (undocumented)
-    align?: 'center' | 'stretch' | 'start' | 'end';
-    // (undocumented)
-    basis?: CSSProperties['flexBasis'];
-    // (undocumented)
-    children?: ReactNode;
-    // (undocumented)
-    direction: 'vertical' | 'horizontal' | 'vertical-reverse' | 'horizontal-reverse';
-    // (undocumented)
+export type StackOwnProps = Omit<ViewProps, 'display' | 'spanRows' | 'direction'> & {
+    direction: ViewProps['direction'];
     evenly?: boolean;
-    // (undocumented)
-    gap?: Size | 'xlarge' | 'none';
-    // (undocumented)
-    grow?: boolean | CSSProperties['flexGrow'];
-    // (undocumented)
-    justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'inherit' | 'initial' | 'revert';
-    // (undocumented)
-    shrink?: boolean | CSSProperties['flexShrink'];
-    // (undocumented)
-    style?: NativeProps<HTMLDivElement>['style'];
-    // (undocumented)
-    wrap?: boolean | 'reverse';
-}
+};
 
 // @public (undocumented)
-export interface StackProps extends StackOwnProps, Omit<NativeProps<HTMLDivElement>, 'children'> {
-}
+export type StackProps = StackOwnProps & NativeProps<HTMLDivElement>;
 
 // @public (undocumented)
 export const StyleProvider: ({ children }: {
     children: ReactNode;
 }) => JSX.Element;
+
+// @public (undocumented)
+export const supportedClassNameEnums: Readonly<{
+    align: readonly ["baseline", "center", "end", "flex-end", "flex-start", "inherit", "initial", "normal", "revert", "self-end", "self-start", "start", "stretch", "unset"];
+    backgroundColor: readonly ["none", "transparent", "inherit"];
+    basis: readonly ["auto", "content", "fit-content", "max-content", "min-content"];
+    border: readonly [];
+    borderColor: readonly ["none", "transparent", "inherit"];
+    borderWidth: readonly [];
+    color: readonly ["none", "transparent", "inherit", "strong", "high", "medium", "low", "lower"];
+    direction: readonly ["horizontal", "vertical", "horizontal-reverse", "vertical-reverse"];
+    display: readonly ["block", "contents", "flex", "grid", "inline", "inline-block", "inline-flex", "inline-grid", "none"];
+    elevation: readonly [];
+    gap: readonly ["none", "border", "small", "large", "xlarge"];
+    justify: readonly ["center", "end", "flex-end", "flex-start", "inherit", "initial", "left", "normal", "revert", "right", "space-around", "space-between", "space-evenly", "start", "stretch", "unset"];
+    maxHeight: readonly ["control", "small-control", "large-control", "fit-content", "max-content", "min-content", "none"];
+    minHeight: readonly ["control", "small-control", "large-control", "fit-content", "max-content", "min-content", "none"];
+    maxWidth: readonly ["control", "small-control", "large-control", "fit-content", "max-content", "min-content", "none"];
+    minWidth: readonly ["control", "small-control", "large-control", "fit-content", "max-content", "min-content", "none"];
+    padding: readonly ["none", "border", "small", "large", "xlarge"];
+    borderRadius: readonly ["none", "border", "small", "large", "xlarge", "full"];
+    purpose: readonly ["above", "below", "toned", "filled", "filled-primary", "control", "toned-control", "filled-control", "filled-primary-control"];
+    shrink: readonly ["inherit", "initial", "revert", "unset"];
+    span: readonly ["auto", "inherit", "initial", "revert", "revert-layer", "unset", "all", "none"];
+    spanRows: readonly ["auto", "inherit", "initial", "revert", "revert-layer", "unset", "all", "none"];
+    userSelect: readonly ["all", "auto", "contain", "element", "none", "text"];
+    wrap: readonly ["wrap", "inherit", "initial", "revert", "unset", "nowrap", "wrap-reverse"];
+}>;
 
 // @public (undocumented)
 export const TAB_INDEX_FOCUSABLE = 0;
@@ -2413,7 +2492,7 @@ export interface TagProps {
 }
 
 // @public (undocumented)
-export const TelInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const TelInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2421,7 +2500,7 @@ withTopToolbar?: boolean | undefined;
 export type TelInputProps = TextInputProps;
 
 // @public (undocumented)
-export const TextareaInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & TextareaInputOwnProps & UnderlyingElementProps & {
+export const TextareaInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & TextareaInputOwnProps & UnderlyingElementProps & {
 style?: TextareaAutosizeProps['style'];
 } & RefAttributes<HTMLTextAreaElement>>>;
 
@@ -2440,7 +2519,7 @@ export type TextareaInputProps = ControlProps<string> & TextareaInputOwnProps & 
 
 // @public (undocumented)
 export const TextInput: MemoExoticComponent<ForwardRefExoticComponent<Omit<TextInputProps<string>, "type"> & {
-type?: "time" | "color" | "range" | "search" | "tel" | "url" | "email" | "date" | "datetime-local" | "month" | "password" | "week" | "datetime" | undefined;
+type?: "color" | "time" | "search" | "tel" | "url" | "email" | "date" | "datetime-local" | "month" | "password" | "range" | "week" | "datetime" | undefined;
 } & RefAttributes<HTMLInputElement>>>;
 
 // @public (undocumented)
@@ -2452,7 +2531,22 @@ export type TextInputOwnProps<V extends string | number = string> = ControlProps
 export type TextInputProps<V extends string | number = string> = TextInputOwnProps<V> & RestHTMLTextInputProps;
 
 // @public (undocumented)
-export const TimeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export interface ThemeScheme {
+    // (undocumented)
+    scheme?: Scheme;
+    // (undocumented)
+    theme?: Intent;
+    // (undocumented)
+    themeContent?: Intent;
+    // (undocumented)
+    themeControls?: Intent;
+}
+
+// @public (undocumented)
+export const ThemeSchemeContext: Context<ThemeScheme>;
+
+// @public (undocumented)
+export const TimeInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & {
 seconds?: boolean | undefined;
@@ -2491,6 +2585,12 @@ export interface TitleBarProps extends ThemeScheme {
     // (undocumented)
     navigation?: ReactNode;
 }
+
+// @public (undocumented)
+export const TitleThemeSchemeContext: Context<ThemeScheme>;
+
+// @public (undocumented)
+export function toBooleanValue(value: string): boolean | null;
 
 // @public (undocumented)
 export function toDate(value?: any): Date | null;
@@ -2592,7 +2692,7 @@ export interface UploadProgressProps {
 }
 
 // @public (undocumented)
-export const UrlInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export const UrlInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2640,8 +2740,11 @@ export function useMouseMove<E extends HTMLElement = HTMLElement>(observedElemen
 export function useMouseMoveContext(): RefObject<boolean>;
 
 // @public (undocumented)
-export function useNativeInput<E extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement, T>({ active, disabled, loading, readOnly, required, focused, hovered, onBlur, onFocus, onFocusChange, defaultValue, name, max, min, onChange, notNull, placeholder, type, value, onValidationStateChange, validationState, className: outerClassName, distinction, intent, scheme, size, ...rest }: ControlProps<T>, forwardedRef: ForwardedRef<E>): AllHTMLAttributes<E> & {
-    ref: RefObject<E>;
+export function useNativeInput<E extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>({ active, disabled, loading, readOnly, required, focused, hovered, onBlur, onFocus, onFocusChange, defaultValue, name, max, min, onChange, notNull: _notNull, placeholder, type, value, onValidationStateChange, validationState, className: outerClassName, distinction, intent, scheme, size, ...rest }: ControlProps<string>, forwardedRef: ForwardedRef<E>): {
+    props: AllHTMLAttributes<E> & {
+        ref: RefCallback<E> | RefObject<E>;
+    };
+    state: string;
 };
 
 // @public (undocumented)
@@ -2663,6 +2766,9 @@ export interface UserMiniControlProps {
     note?: ReactNode;
 }
 
+// @public (undocumented)
+export type UserSelectEnum = typeof supportedClassNameEnums['userSelect'][number];
+
 // Warning: (ae-forgotten-export) The symbol "SectionTabsMap" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -2677,10 +2783,31 @@ export function useSectionTabsRegistration(): SectionTabsRegistrationContextType
 export const UseTableElementContext: Context<boolean>;
 
 // @public (undocumented)
+export const useThemeScheme: ({ scheme, theme, themeContent, themeControls, }: ThemeScheme) => {
+    scheme: Scheme | undefined;
+    theme: Intent | undefined;
+    themeContent: Intent | undefined;
+    themeControls: Intent | undefined;
+};
+
+// @public (undocumented)
+export const useTitleThemeScheme: ({ scheme, theme, themeContent, themeControls, }: ThemeScheme) => {
+    scheme: Scheme | undefined;
+    theme: Intent | undefined;
+    themeContent: Intent | undefined;
+    themeControls: Intent | undefined;
+};
+
+// Warning: (ae-forgotten-export) The symbol "UseViewPropsResult" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function useViewProps({ align, backgroundColor, basis, border, borderColor, borderRadius, borderWidth, color, direction, display, elevation, gap, gapHorizontal, gapVertical, justify, maxHeight, maxWidth, minHeight, minWidth, padding, purpose, scheme, shrink, span, spanRows, style: styleProp, theme, themeContent, themeControls, userSelect, wrap, ...rest }: ViewDisplayProps & Pick<ViewContainerProps, 'style'>, pseudoState?: string, falsyClassNameSuffix?: string): UseViewPropsResult;
+
+// @public (undocumented)
 export type ValidationState = Default | 'valid' | 'invalid';
 
 // @public (undocumented)
-export interface ValidationStateProps {
+export interface ValidationSteteProps {
     // (undocumented)
     onValidationStateChange?: (error?: string) => void;
     // (undocumented)
@@ -2688,10 +2815,173 @@ export interface ValidationStateProps {
 }
 
 // @public (undocumented)
-export type VisuallyDependentControlProps = ControlStateProps & ControlDisplayProps & Pick<ValidationStateProps, 'validationState'>;
+export const View: MemoExoticComponent<ForwardRefExoticComponent<Pick<ClassAttributes<HTMLDivElement> & HTMLAttributes<HTMLDivElement>, PublicContainerPropNames | "contentEditable"> & ViewProps & RefAttributes<HTMLDivElement>>>;
 
 // @public (undocumented)
-export const WeekInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationStateProps & ControlStateProps & ControlFocusProps & ControlConstraintProps<string> & ControlValueProps<string> & {
+export type ViewAlign = CSSProperties['alignItems'] | AlignEnum;
+
+// @public (undocumented)
+export type ViewBackgroundColor = string | boolean | BackgroundColorEnum;
+
+// @public (undocumented)
+export type ViewBasis = CSSProperties['flexBasis'] | BasisEnum;
+
+// @public (undocumented)
+export type ViewBorder = CSSProperties['border'] | boolean | BorderEnum;
+
+// @public (undocumented)
+export type ViewBorderColor = string | boolean | BorderColorEnum;
+
+// @public (undocumented)
+export type ViewBorderRadius = CSSProperties['borderRadius'] | boolean | BorderRadiusEnum;
+
+// @public (undocumented)
+export type ViewBorderWidth = string | BorderWidthEnum;
+
+// @public (undocumented)
+export type ViewColor = string | boolean | ColorEnum;
+
+// @public (undocumented)
+export interface ViewContainerProps extends Pick<DivProps, PublicContainerPropNames> {
+}
+
+// @public (undocumented)
+export type ViewDirection = DirectionEnum;
+
+// @public (undocumented)
+export type ViewDisplay = string | DisplayEnum;
+
+// @public (undocumented)
+export interface ViewDisplayProps extends ThemeScheme {
+    // (undocumented)
+    align?: ViewAlign | null;
+    // (undocumented)
+    backgroundColor?: ViewBackgroundColor | null;
+    // (undocumented)
+    basis?: ViewBasis | null;
+    // (undocumented)
+    border?: ViewBorder | null;
+    // (undocumented)
+    borderColor?: ViewBorderColor | null;
+    // (undocumented)
+    borderRadius?: ViewBorderRadius | boolean | null;
+    // (undocumented)
+    borderWidth?: ViewBorderWidth | null;
+    // (undocumented)
+    color?: ViewColor | null;
+    // (undocumented)
+    direction?: ViewDirection | null;
+    // (undocumented)
+    display?: ViewDisplay | null;
+    // (undocumented)
+    elevation?: ViewElevation | null;
+    // (undocumented)
+    gap?: ViewGap | null;
+    // (undocumented)
+    gapHorizontal?: ViewGapHorizontal | null;
+    // (undocumented)
+    gapVertical?: ViewGapVertical | null;
+    // (undocumented)
+    justify?: ViewJustify | null;
+    // (undocumented)
+    maxHeight?: ViewMaxHeight | null;
+    // (undocumented)
+    maxWidth?: ViewMaxWidth | null;
+    // (undocumented)
+    minHeight?: ViewMinHeight | null;
+    // (undocumented)
+    minWidth?: ViewMinWidth | null;
+    // (undocumented)
+    padding?: ViewPadding | boolean | null;
+    // (undocumented)
+    purpose?: ViewPurpose | null;
+    // (undocumented)
+    shrink?: ViewShrink | null;
+    // (undocumented)
+    span?: ViewSpan | null;
+    // (undocumented)
+    spanRows?: ViewSpanRows | null;
+    // (undocumented)
+    userSelect?: ViewUserSelect | boolean | null;
+    // (undocumented)
+    wrap?: ViewWrap | null;
+}
+
+// @public (undocumented)
+export type ViewElevation = boolean | ElevationEnum;
+
+// @public (undocumented)
+export type ViewGap = CSSProperties['gap'] | boolean | GapEnum;
+
+// @public (undocumented)
+export type ViewGapHorizontal = CSSProperties['rowGap'] | boolean | GapEnum;
+
+// @public (undocumented)
+export type ViewGapVertical = CSSProperties['columnGap'] | boolean | GapEnum;
+
+// @public (undocumented)
+export type ViewJustify = JustifyEnum;
+
+// @public (undocumented)
+export type ViewMaxHeight = CSSProperties['maxHeight'] | MaxHeight;
+
+// @public (undocumented)
+export type ViewMaxWidth = CSSProperties['maxWidth'] | MinHeight;
+
+// @public (undocumented)
+export type ViewMinHeight = CSSProperties['minHeight'] | MaxWidth;
+
+// @public (undocumented)
+export type ViewMinWidth = CSSProperties['minWidth'] | MinWidth;
+
+// @public (undocumented)
+export interface ViewOwnProps extends ViewDisplayProps {
+    // (undocumented)
+    active?: boolean;
+    // (undocumented)
+    activeProps?: ViewDisplayProps;
+    // (undocumented)
+    component?: keyof JSX.IntrinsicElements;
+    // (undocumented)
+    focus?: boolean;
+    // (undocumented)
+    focusProps?: ViewDisplayProps;
+    // (undocumented)
+    hover?: boolean;
+    // (undocumented)
+    hoverProps?: ViewDisplayProps;
+}
+
+// @public (undocumented)
+export type ViewPadding = CSSProperties['padding'] | PaddingEnum;
+
+// @public (undocumented)
+export interface ViewProps extends ViewOwnProps, ViewContainerProps {
+}
+
+// @public (undocumented)
+export type ViewPurpose = PurposeEnum;
+
+// @public (undocumented)
+export type ViewShrink = CSSProperties['flexShrink'] | boolean | ShrinkEnum;
+
+// @public (undocumented)
+export type ViewSpan = boolean | string | number | SpanEnum;
+
+// @public (undocumented)
+export type ViewSpanRows = string | number | SpanRowsEnum;
+
+// @public (undocumented)
+export type ViewUserSelect = UserSelectEnum;
+
+// @public (undocumented)
+export type ViewWrap = boolean | WrapEnum;
+
+// @public (undocumented)
+export type VisuallyDependentControlProps = ControlStateProps & ControlDisplayProps & Pick<ValidationSteteProps, 'validationState'>;
+
+// @public (undocumented)
+export const WeekInput: MemoExoticComponent<ForwardRefExoticComponent<ControlDisplayProps & ValidationSteteProps & ControlStateProps & ControlFocusProps & ControlValueProps<string> & {
 withTopToolbar?: boolean | undefined;
 } & RestHTMLTextInputProps & RefAttributes<HTMLInputElement>>>;
 
@@ -2703,6 +2993,9 @@ export type WeekInputString = string;
 
 // @public (undocumented)
 export const WeekInputStringRegExp: RegExp;
+
+// @public (undocumented)
+export type WrapEnum = typeof supportedClassNameEnums['wrap'][number];
 
 // (No @packageDocumentation comment for this package)
 

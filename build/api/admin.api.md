@@ -14,7 +14,6 @@ import type { AsyncBatchUpdatesOptions } from '@contember/binding';
 import { BaseEditor } from 'slate';
 import { BaseSyntheticEvent } from 'react';
 import { BoxOwnProps } from '@contember/ui';
-import { BoxProps } from '@contember/ui';
 import { ButtonProps } from '@contember/ui';
 import { ChildrenAnalyzer } from '@contember/react-multipass-rendering';
 import { ColorInputProps } from '@contember/ui';
@@ -51,6 +50,7 @@ import { ErrorListProps } from '@contember/ui';
 import { FC } from 'react';
 import { FieldAccessor } from '@contember/binding';
 import { FieldBasicProps } from '@contember/binding';
+import { FieldContainerOwnProps } from '@contember/ui';
 import { FieldContainerProps } from '@contember/ui';
 import { FieldErrors } from '@contember/ui';
 import { FieldValue } from '@contember/binding';
@@ -103,7 +103,7 @@ import { RelativeSingleField } from '@contember/binding';
 import { RemovalType } from '@contember/binding';
 import { RenderElementProps } from 'slate-react';
 import { RenderLeafProps } from 'slate-react';
-import { RepeaterItemContainerProps } from '@contember/ui';
+import { RepeaterItemContainerOwnProps } from '@contember/ui';
 import type { S3FileUploader } from '@contember/client';
 import { SaveButtonProps } from '@contember/ui';
 import { Scalar } from '@contember/binding';
@@ -138,6 +138,7 @@ import { TileLayerProps } from 'react-leaflet';
 import { TimeInputProps } from '@contember/ui';
 import { UrlInputProps } from '@contember/ui';
 import type { VideoHTMLAttributes } from 'react';
+import { ViewContainerProps } from '@contember/ui';
 
 // @public (undocumented)
 export const acceptAnyFile: () => boolean;
@@ -625,7 +626,7 @@ export type ClearFieldButtonInnerProps = ClearFieldButtonInnerPublicProps & Clea
 export type ClearFieldButtonInnerPublicProps = ButtonProps;
 
 // @public (undocumented)
-export type ClearFieldButtonProps = Omit<ClearFieldButtonInnerPublicProps, 'defaultValue'> & SimpleRelativeSingleFieldProps;
+export type ClearFieldButtonProps = Omit<ClearFieldButtonInnerPublicProps, 'defaultValue' | 'elevation'> & SimpleRelativeSingleFieldProps;
 
 // @public (undocumented)
 export const CoalesceFieldView: <Persisted extends Scalar = Scalar>(props: CoalesceFieldViewProps<Persisted>) => ReactElement;
@@ -725,10 +726,10 @@ export const ContemberEditor: {
     }) => boolean;
     hasParentOfType: <Editor extends Editor, Element_3 extends EditorElement>(editor: Editor, nodeEntry: NodeEntry<Node_2>, type: Element_3["type"], suchThat?: Partial<Element_3> | undefined) => boolean;
     isElementType: <Element_4 extends EditorElement>(element: Node_2, type: Element_4["type"], suchThat?: Partial<Element_4> | undefined) => boolean;
-    permissivelyDeserializeNodes: <E_8 extends Editor>(editor: E_8, serializedElement: string, errorMessage?: string | undefined) => (EditorText | EditorElement)[];
+    permissivelyDeserializeNodes: <E_8 extends Editor>(editor: E_8, serializedElement: string, errorMessage?: string | undefined) => (EditorElement | EditorText)[];
     removeMarks: <T_3 extends EditorText, E_9 extends Editor>(editor: E_9, marks: TextSpecifics<T_3>) => void;
-    serializeNodes: <E_10 extends Editor>(editor: E_10, elements: (EditorText | EditorElement)[], errorMessage?: string | undefined) => string;
-    strictlyDeserializeNodes: <E_11 extends Editor>(editor: E_11, serializedElement: string, errorMessage?: string | undefined) => (EditorText | EditorElement)[];
+    serializeNodes: <E_10 extends Editor>(editor: E_10, elements: (EditorElement | EditorText)[], errorMessage?: string | undefined) => string;
+    strictlyDeserializeNodes: <E_11 extends Editor>(editor: E_11, serializedElement: string, errorMessage?: string | undefined) => (EditorElement | EditorText)[];
     textToSpecifics: <Text_1 extends EditorText = EditorText>(textNode: Text_1) => TextSpecifics<Text_1>;
     toLatestFormat: <E_12 extends Editor>(editor: E_12, potentiallyOldNode: SerializableEditorNode) => SerializableEditorNode;
     topLevelNodes: <E_13 extends Editor>(editor: E_13) => Generator<NodeEntry<Node_2>, void, undefined>;
@@ -1512,14 +1513,12 @@ export const EmbedHandlers: {
 };
 
 // @public (undocumented)
-export const EmptyMessage: MemoExoticComponent<({ children, component, distinction }: EmptyMessageProps) => JSX.Element>;
+export const EmptyMessage: MemoExoticComponent<({ children, component, className, ...boxProps }: EmptyMessageProps) => JSX.Element>;
 
 // @public (undocumented)
-export interface EmptyMessageComponentProps {
+export interface EmptyMessageComponentProps extends Omit<BoxOwnProps, 'children'> {
     // (undocumented)
     children: ReactNode;
-    // (undocumented)
-    distinction?: BoxProps['distinction'];
 }
 
 // @public (undocumented)
@@ -1531,13 +1530,11 @@ export interface EmptyMessageOuterProps {
 }
 
 // @public (undocumented)
-export interface EmptyMessageProps {
+export interface EmptyMessageProps extends Omit<BoxOwnProps, 'children' | 'component'> {
     // (undocumented)
     children: ReactNode;
     // (undocumented)
     component?: ComponentType<EmptyMessageComponentProps>;
-    // (undocumented)
-    distinction?: BoxProps['distinction'];
 }
 
 // @public (undocumented)
@@ -2676,9 +2673,11 @@ export const MultiEditPage: (<ContainerExtraProps, ItemExtraProps>(props: MultiE
 
 // @public (undocumented)
 export type MultiEditPageProps<ContainerExtraProps, ItemExtraProps> = SugaredQualifiedEntityList & EntityListSubTreeAdditionalProps & {
-    pageName?: string;
     children?: ReactNode;
+    compact?: boolean;
+    pageName?: string;
     rendererProps?: Omit<MutableEntityListPageRendererProps<ContainerExtraProps, ItemExtraProps>, 'accessor' | 'children'>;
+    scrollable?: boolean;
 };
 
 // @public (undocumented)
@@ -2726,7 +2725,7 @@ export type MutationRequestState<T> = QueryRequestState<T> | RequestStateUniniti
 export const NativeSelectField: FunctionComponent<NativeSelectFieldProps>;
 
 // @public (undocumented)
-export const NativeSelectFieldInner: MemoExoticComponent<ForwardRefExoticComponent<Pick<NativeSelectFieldInnerProps<any>, "data" | "label" | "style" | "key" | "description" | "className" | "placeholder" | "onSelect" | "size" | "errors" | "direction" | "gap" | "labelDescription" | "labelPosition" | "width" | "required" | "useLabelElement" | "notNull" | "isLoading" | "onSearch" | "currentValue" | "onClear" | "onAddNew" | "allowNull"> & RefAttributes<HTMLSelectElement>>>;
+export const NativeSelectFieldInner: MemoExoticComponent<ForwardRefExoticComponent<Pick<NativeSelectFieldInnerProps<any>, "size" | "key" | "className" | "id" | "placeholder" | "style" | "color" | "onSelect" | "elevation" | "distinction" | "active" | "scheme" | "display" | "spanRows" | "direction" | "activeProps" | "component" | "focus" | "focusProps" | "hover" | "hoverProps" | "align" | "backgroundColor" | "border" | "borderColor" | "borderRadius" | "borderWidth" | "basis" | "gap" | "gapHorizontal" | "gapVertical" | "justify" | "maxHeight" | "maxWidth" | "minHeight" | "minWidth" | "padding" | "purpose" | "shrink" | "span" | "userSelect" | "wrap" | "theme" | "themeContent" | "themeControls" | "evenly" | "errors" | "states" | "description" | "footer" | "label" | "labelDescription" | "labelPosition" | "required" | "scrollable" | "useLabelElement" | "width" | "data" | "notNull" | "onSearch" | "isLoading" | "onClear" | "onAddNew" | "currentValue" | "allowNull"> & RefAttributes<HTMLSelectElement>>>;
 
 // @public (undocumented)
 export interface NativeSelectFieldInnerProps<ActualValue> extends ChoiceFieldData.SingleChoiceFieldMetadata<ActualValue>, NativeSelectFieldInnerPublicProps, RefAttributes<HTMLSelectElement> {
@@ -3174,16 +3173,14 @@ export const Repeater: <ContainerExtraProps, ItemExtraProps>(props: RepeaterProp
 export type RepeaterDictionary = typeof repeaterDictionary;
 
 // @public (undocumented)
-export const RepeaterFieldContainer: MemoExoticComponent<({ accessor, addButtonText, children, createNewEntity, addButtonComponent: AddButton, addButtonComponentExtraProps, addButtonProps, emptyMessage, emptyMessageComponent, enableAddingNew, formatMessage, isEmpty, label, }: RepeaterFieldContainerProps) => JSX.Element>;
+export const RepeaterFieldContainer: MemoExoticComponent<({ accessor, addButtonComponent: AddButton, addButtonComponentExtraProps, addButtonProps, addButtonText, boxLabel, children, compact, createNewEntity, direction, emptyMessage, emptyMessageComponent, enableAddingNew, entities, formatMessage, isEmpty, label, ...rest }: RepeaterFieldContainerProps) => JSX.Element>;
 
 // @public (undocumented)
-export interface RepeaterFieldContainerPrivateProps {
+export interface RepeaterFieldContainerPrivateProps extends FieldContainerOwnProps {
     // (undocumented)
     accessor: EntityListAccessor;
     // @deprecated (undocumented)
     boxLabel?: ReactNode;
-    // (undocumented)
-    children: ReactNode;
     // (undocumented)
     createNewEntity: (initialize?: EntityAccessor.BatchUpdatesHandler) => void;
     // (undocumented)
@@ -3192,8 +3189,6 @@ export interface RepeaterFieldContainerPrivateProps {
     formatMessage: MessageFormatter<RepeaterDictionary>;
     // (undocumented)
     isEmpty: boolean;
-    // (undocumented)
-    label: ReactNode;
 }
 
 // @public (undocumented)
@@ -3201,7 +3196,9 @@ export type RepeaterFieldContainerProps = RepeaterFieldContainerPublicProps & Re
 
 // @public (undocumented)
 export type RepeaterFieldContainerPublicProps = EmptyMessageOuterProps & AddEntityButtonProps & {
+    compact?: boolean;
     enableAddingNew?: boolean;
+    scrollable?: boolean;
 };
 
 // @public (undocumented)
@@ -3211,7 +3208,7 @@ export const RepeaterHandle: MemoExoticComponent<() => JSX.Element>;
 export const RepeaterInner: (<ContainerExtraProps, ItemExtraProps>(props: RepeaterInnerProps<ContainerExtraProps, ItemExtraProps>) => ReactElement) & StaticRenderProvider<RepeaterInnerProps<unknown, unknown>, "accessor">;
 
 // @public (undocumented)
-export interface RepeaterInnerProps<ContainerExtraProps, ItemExtraProps> extends RepeaterFieldContainerPublicProps, Omit<RepeaterItemProps, 'children' | 'canBeRemoved' | 'label'> {
+export interface RepeaterInnerProps<ContainerExtraProps, ItemExtraProps> extends RepeaterFieldContainerPublicProps, Pick<RepeaterItemProps, 'dragHandleComponent' | 'removalType' | 'compact' | 'direction'> {
     // (undocumented)
     accessor: EntityListAccessor;
     // @deprecated (undocumented)
@@ -3239,18 +3236,14 @@ export interface RepeaterInnerProps<ContainerExtraProps, ItemExtraProps> extends
 }
 
 // @public (undocumented)
-export const RepeaterItem: MemoExoticComponent<({ children, canBeRemoved, label, removalType, dragHandleComponent }: RepeaterItemProps) => JSX.Element>;
+export const RepeaterItem: MemoExoticComponent<({ actions, canBeRemoved, children, removalType, ...rest }: RepeaterItemProps) => JSX.Element>;
 
 // @public (undocumented)
-export interface RepeaterItemProps {
+export interface RepeaterItemProps extends Omit<RepeaterItemContainerOwnProps, 'actions' | 'children'>, ViewContainerProps {
+    // (undocumented)
+    actions?: ReactNode;
     // (undocumented)
     canBeRemoved: boolean;
-    // (undocumented)
-    children: ReactNode;
-    // (undocumented)
-    dragHandleComponent?: RepeaterItemContainerProps['dragHandleComponent'];
-    // (undocumented)
-    label: ReactNode;
     // (undocumented)
     removalType?: RemovalType;
 }
@@ -3574,7 +3567,7 @@ export interface SelectFieldInnerProps extends ChoiceFieldData.SingleChoiceField
 }
 
 // @public (undocumented)
-export interface SelectFieldInnerPublicProps extends Omit<FieldContainerProps, 'children'> {
+export interface SelectFieldInnerPublicProps extends Omit<FieldContainerOwnProps, 'children'> {
     // (undocumented)
     allowNull?: boolean;
     // (undocumented)
@@ -3705,13 +3698,13 @@ export interface SimpleRelativeSingleFieldMetadata<Value extends FieldValue = Fi
 }
 
 // @public (undocumented)
-export type SimpleRelativeSingleFieldProps = FieldBasicProps & Omit<FieldContainerProps, 'children'>;
+export type SimpleRelativeSingleFieldProps = FieldBasicProps & Omit<FieldContainerOwnProps, 'children'>;
 
 // @public (undocumented)
-export const SimpleRelativeSingleFieldProxy: MemoExoticComponent<({ render, label, labelDescription, labelPosition, description, ...props }: SimpleRelativeSingleFieldProxyProps) => JSX.Element>;
+export const SimpleRelativeSingleFieldProxy: MemoExoticComponent<({ render, label, ...props }: SimpleRelativeSingleFieldProxyProps) => JSX.Element | null>;
 
 // @public (undocumented)
-export type SimpleRelativeSingleFieldProxyProps = Omit<FieldContainerProps, 'children'> & SugaredRelativeSingleField & {
+export type SimpleRelativeSingleFieldProxyProps = FieldContainerOwnProps & SugaredRelativeSingleField & {
     render: (fieldMetadata: SimpleRelativeSingleFieldMetadata<any>, props: any) => ReactNode;
 };
 

@@ -1,18 +1,18 @@
 .#{$cui-conf-globalPrefix}divider
   --divider-margin: calc(var(--cui-padding-vertical) / 2)
-  .view-horizontal &
+  .direction-horizontal &
     --divider-margin: calc(var(--cui-padding-horizontal) / 2)
   &.view-none
     --divider-margin: 0
-    .view-horizontal &
+    .direction-horizontal &
       --divider-margin: 0
   &.view-small
     --divider-margin: var(--cui-gap-vertical)
-    .view-horizontal &
+    .direction-horizontal &
       --divider-margin: var(--cui-gap-horizontal)
   &.view-large
     --divider-margin: var(--cui-padding-vertical)
-    .view-horizontal &
+    .direction-horizontal &
       --divider-margin: var(--cui-padding-horizontal)
 
   align-self: stretch
@@ -22,7 +22,7 @@
   min-height: 1px
   min-width: 1px
 
-  .view-horizontal &
+  .direction-horizontal > &
     margin-bottom: unset
     margin-left: calc(var(--divider-margin) - 0.5px)
     margin-right: calc(var(--divider-margin) - 0.5px)

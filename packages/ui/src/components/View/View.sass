@@ -1,0 +1,451 @@
+.cui\:hover
+	cursor: pointer
+
+.cui,
+.cui:active.cui\:active,
+.cui:focus.cui\:focus,
+.cui:hover.cui\:hover
+	&-align
+		&\:baseline
+			align-items: baseline
+		&\:center
+			align-items: center
+		&\:end
+			align-items: end
+		&\:flex-end
+			align-items: flex-end
+		&\:flex-start
+			align-items: flex-start
+		&\:inherit
+			align-items: inherit
+		&\:initial
+			align-items: initial
+		&\:normal
+			align-items: normal
+		&\:revert
+			align-items: revert
+		&\:self-end
+			align-items: self-end
+		&\:self-start
+			align-items: self-start
+		&\:start
+			align-items: start
+		&\:stretch
+			align-items: stretch
+		&\:unset
+			align-items: unset
+
+	&-background-color
+		&
+			background-color: var(--cui-background-color)
+		&\:none
+			background-color: unset
+		&\:transparent
+			background-color: transparent
+		&\:inherit
+			background-color: inherit
+		&\:above
+			background-color: var(--cui-background-color--above)
+		&\:below
+			background-color: var(--cui-background-color--below)
+		&\:filled
+			background-color: var(--cui-filled-background-color)
+		&\:toned
+			background-color: var(--cui-toned-background-color)
+		&\:filled-primary
+			background-color: var(--cui-filled-primary-background-color)
+		&\:control
+			background-color: var(--cui-control-background-color)
+		&\:filled-control
+			background-color: var(--cui-filled-control-background-color)
+		&\:filled-primary-control
+			background-color: var(--cui-filled-primary-control-background-color)
+		&\:toned-control
+			background-color: var(--cui-toned-control-background-color)
+
+	&-border
+		&
+			border: var(--cui-control-border-width) solid var(--cui-color--lower)
+		&\:none
+			border-width: 0px
+
+	&-border-color
+		&,
+		&\:above,
+		&\:below
+			border-color: var(--cui-color--lower)
+		&\:none
+			border-color: unset
+		&\:transparent
+			border-color: transparent
+		&\:inherit
+			border-color: inherit
+		&\:filled
+			border-color: var(--cui-filled-border-color)
+		&\:toned
+			border-color: var(--cui-toned-border-color)
+		&\:filled-primary
+			border-color: var(--cui-filled-primary-border-color)
+		&\:control
+			border-color: var(--cui-control-border-color)
+		&\:filled-control
+			border-color: var(--cui-filled-control-border-color)
+		&\:filled-primary-control
+			border-color: var(--cui-filled-primary-control-border-color)
+		&\:toned-control
+			border-color: var(--cui-toned-control-border-color)
+
+	&-border-radius
+		&
+			border-radius: var(--cui-control-border-radius)
+		&\:none
+			border-radius: 0
+		&\:border
+			border-radius: var(--cui-control-border-width)
+		&\:small
+			border-radius: calc(var(--cui-control-border-radius) / 2)
+		&\:large
+			border-radius: var(--cui-padding)
+		&\:xlarge
+			border-radius: calc(1.5 * var(--cui-padding))
+		&\:full
+			border-radius: 100%
+
+	// TODO: Fix opacities
+	&-color
+		&,
+		&\:above,
+		&\:below
+			color: var(--cui-color)
+		&\:strong
+			color: var(--cui-color--strong)
+		&\:high
+			color: var(--cui-color--high)
+		&\:medium
+			color: var(--cui-color--medium)
+		&\:low
+			color: var(--cui-color--low)
+		&\:lower
+			color: var(--cui-color--lower)
+		&\:none
+			color: unset
+		&\:transparent
+			color: transparent
+		&\:inherit
+			color: inherit
+		&\:filled
+			color: var(--cui-filled-color)
+		&\:toned
+			color: var(--cui-toned-color)
+		&\:filled-primary
+			color: var(--cui-filled-primary-color)
+		&\:control
+			color: var(--cui-control-color)
+		&\:filled-control
+			color: var(--cui-filled-control-color)
+		&\:filled-primary-control
+			color: var(--cui-filled-primary-control-color)
+		&\:toned-control
+			color: var(--cui-toned-control-color)
+
+	&-basis
+		&\:auto
+			flex-basis: auto
+		&\:content
+			flex-basis: content
+		&\:fit-content
+			flex-basis: fit-content
+		&\:max-content
+			flex-basis: max-content
+		&\:min-content
+			flex-basis: min-content
+
+	&-direction
+		&\:horizontal-reverse
+			flex-direction: row-reverse
+		&\:horizontal
+			flex-direction: row
+		&\:inherit
+			flex-direction: inherit
+		&\:initial
+			flex-direction: initial
+		&\:revert
+			flex-direction: revert
+		&\:unset
+			flex-direction: unset
+		&\:vertical-reverse
+			flex-direction: column-reverse
+		&\:vertical
+			flex-direction: column
+
+	&-display
+		&\:block
+			display: block
+		&\:contents
+			display: contents
+		&\:flex
+			display: flex
+		&\:none
+			display: none
+		&\:grid
+			display: grid
+		&\:inline
+			display: inline
+		&\:inline-block
+			display: inline-block
+		&\:inline-flex
+			display: inline-flex
+		&\:inline-grid
+			display: inline-grid
+
+	&-elevation
+		--cui-view-shadow-color: var(--cui-shadow-color, rgba(0, 0, 0, 0.125))
+		--cui-view-shadow-offset: var(--cui-shadow-offset, 0.25em)
+		&
+			box-shadow: 0 var(--cui-view-shadow-offset) var(--cui-view-shadow-offset) var(--cui-view-shadow-color)
+
+	&-gap
+		&, &\:horizontal
+			column-gap: calc(var(--cui-padding-horizontal) / 2)
+		&, &\:vertical
+			row-gap:  calc(var(--cui-padding-vertical) / 2)
+		&\:border, &\:horizontal-border
+			column-gap: var(--cui-control-border-width)
+			row-gap: var(--cui-control-border-width)
+		&\:small, &\:horizontal-small
+			row-gap: var(--cui-gap-vertical)
+		&\:large, &\:horizontal-large
+			row-gap: var(--cui-padding-vertical)
+		&\:xlarge, &\:horizontal-xlarge
+			row-gap: calc(1.5 * var(--cui-padding-vertical))
+		&\:none, &\:horizontal-none
+			row-gap: 0
+		&\:border, &\:vertical-border
+			column-gap: var(--cui-control-border-width)
+		&\:small, &\:vertical-small
+			column-gap: var(--cui-gap-horizontal)
+		&\:large, &\:vertical-large
+			column-gap: var(--cui-padding-horizontal)
+		&\:xlarge, &\:vertical-xlarge
+			column-gap: calc(1.5 * var(--cui-padding-horizontal))
+		&\:none, &\:vertical-none
+			column-gap: 0
+
+	&-justify
+		&\:center
+			justify-content: center
+		&\:end
+			justify-content: end
+		&\:flex-end
+			justify-content: flex-end
+		&\:flex-start
+			justify-content: flex-start
+		&\:inherit
+			justify-content: inherit
+		&\:initial
+			justify-content: initial
+		&\:left
+			justify-content: left
+		&\:normal
+			justify-content: normal
+		&\:revert
+			justify-content: revert
+		&\:right
+			justify-content: right
+		&\:space-around
+			justify-content: space-around
+		&\:space-between
+			justify-content: space-between
+		&\:space-evenly
+			justify-content: space-evenly
+		&\:start
+			justify-content: start
+		&\:stretch
+			justify-content: stretch
+			&\: > *
+				flex-grow: 1
+				flex-shrink: 1
+		&\:unset
+			justify-content: unset
+
+	&-max-width
+		&\:control
+			max-width: var(--cui-control-height)
+		&\:small-control
+			max-width: var(--cui-control-height--small)
+		&\:large-control
+			max-width: var(--cui-control-height--large)
+		&\:fit-content
+			max-width: fit-content
+		&\:intrinsic
+			max-width: intrinsic
+		&\:max-content
+			max-width: max-content
+		&\:min-content
+			max-width: min-content
+		&\:none
+			max-width: none
+
+	&-min-width
+		&\:control
+			min-width: var(--cui-control-height)
+		&\:small-control
+			min-width: var(--cui-control-height--small)
+		&\:large-control
+			min-width: var(--cui-control-height--large)
+		&\:auto
+			min-width: auto
+		&\:fit-content
+			min-width: fit-content
+		&\:intrinsic
+			min-width: intrinsic
+		&\:max-content
+			min-width: max-content
+		&\:min-content
+			min-width: min-content
+		&\:min-intrinsic
+			min-width: min-intrinsic
+
+	&-max-height
+		&\:control
+			max-height: var(--cui-control-height)
+		&\:small-control
+			max-height: var(--cui-control-height--small)
+		&\:large-control
+			max-height: var(--cui-control-height--large)
+		&\:fit-content
+			max-height: fit-content
+		&\:intrinsic
+			max-height: intrinsic
+		&\:max-content
+			max-height: max-content
+		&\:min-content
+			max-height: min-content
+		&\:none
+			max-height: none
+
+	&-min-height
+		&\:control
+			min-height: var(--cui-control-height)
+		&\:small-control
+			min-height: var(--cui-control-height--small)
+		&\:large-control
+			min-height: var(--cui-control-height--large)
+		&\:auto
+			min-height: auto
+		&\:fit-content
+			min-height: fit-content
+		&\:intrinsic
+			min-height: intrinsic
+		&\:max-content
+			min-height: max-content
+		&\:min-content
+			min-height: min-content
+
+	&-padding
+		&
+			padding: calc(var(--cui-padding) / 2)
+		&\:none
+			padding: 0
+		&\:border
+			padding: var(--cui-control-border-width)
+		&\:small
+			padding: var(--cui-gap)
+		&\:large
+			padding: var(--cui-padding)
+		&\:xlarge
+			padding: calc(1.5 * var(--cui-padding))
+
+	&-shrink
+		&
+			flex-shrink: 1
+		&\:inherit
+			flex-shrink: inherit
+		&\:initial
+			flex-shrink: initial
+		&\:revert
+			flex-shrink: revert
+		&\:unset
+			flex-shrink: unset
+		&\:none
+			flex-shrink: none
+
+	&-span
+		&
+			flex-grow: 1
+			grid-column: span 1
+		&\:auto
+			flex-grow: auto
+			grid-column: auto
+		&\:inherit
+			flex-grow: inherit
+			grid-column: inherit
+		&\:initial
+			flex-grow: initial
+			grid-column: initial
+		&\:revert
+			flex-grow: revert
+			grid-column: revert
+		&\:revert-layer
+			flex-grow: revert-layer
+			grid-column: revert-layer
+		&\:unset
+			flex-grow: unset
+			column-span: unset
+		&\:all
+			grid-column: 1/-1
+			flex-grow: 1
+			flex-basis: 100%
+		&\:none
+			flex-grow: 0
+			grid-column: span 0
+
+	&-span-rows
+		&\:auto
+			grid-row: auto
+		&\:inherit
+			grid-row: inherit
+		&\:initial
+			grid-row: initial
+		&\:revert
+			grid-row: revert
+		&\:unset
+			grid-row: unset
+		// TODO: Works?
+		&\:all
+			grid-row: all
+		// TODO: Works?
+		&\:none
+			grid-row: span 0
+
+	&-user-select
+		&
+			user-select: all
+		&\:all
+			user-select: all
+		&\:auto
+			user-select: auto
+		&\:contain
+			user-select: contain
+		&\:element
+			user-select: element
+		&\:none
+			user-select: none
+		&\:tex
+			user-select: text
+
+	&-wrap
+		&
+			flex-wrap: wrap
+		&\:inherit
+			flex-wrap: inherit
+		&\:initial
+			flex-wrap: initial
+		&\:revert
+			flex-wrap: revert
+		&\:unset
+			flex-wrap: unset
+		&\:nowrap
+			flex-wrap: nowrap
+		&\:wrap-reverse
+			flex-wrap: wrap-reverse

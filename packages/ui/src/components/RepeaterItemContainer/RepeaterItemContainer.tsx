@@ -1,30 +1,49 @@
 import classNames from 'classnames'
 import { ComponentType, memo, ReactNode } from 'react'
 import { useClassNamePrefix } from '../../auxiliary'
-import { Size } from '../../types'
-import { toViewClass } from '../../utils'
-import { Box } from '../Box'
+import { toStateClass, toViewClass } from '../../utils'
+import { Box, BoxOwnProps } from '../Box'
 import { Icon } from '../Icon'
-import { Stack } from '../Stack'
+import { Stack, StackOwnProps } from '../Stack'
 import { Label } from '../Typography/Label'
 
-export interface RepeaterItemContainerProps {
-	gap?: Size
-	label?: ReactNode
+export interface RepeaterItemContainerOwnProps {
 	actions?: ReactNode
 	children: ReactNode
+	compact?: boolean
+	direction?: StackOwnProps['direction']
 	dragHandleComponent?: ComponentType<{ children: ReactNode }>
+	label?: ReactNode
+	scrollable?: boolean
 }
 
-export const RepeaterItemContainer = memo(({ actions, children, gap, label, dragHandleComponent: Handle }: RepeaterItemContainerProps) => {
+export type RepeaterItemContainerProps =
+	& RepeaterItemContainerOwnProps
+	& BoxOwnProps
+
+
+export const RepeaterItemContainer = memo(({
+	actions,
+	children,
+	className,
+	compact,
+	gap = true,
+	direction,
+	dragHandleComponent: Handle,
+	label,
+	...props
+}: RepeaterItemContainerProps) => {
 	const componentClassName = `${useClassNamePrefix()}repeater-item-container`
 
 	return (
 		<Box
+			{...props}
 			gap={gap}
 			className={classNames(
 				componentClassName,
 				toViewClass('sortable', !!Handle),
+				toStateClass('compact', compact),
+				className,
 			)}
 		>
 			{Handle && (
@@ -45,8 +64,9 @@ export const RepeaterItemContainer = memo(({ actions, children, gap, label, drag
 				{actions && <div className={`${componentClassName}-actions`}>{actions}</div>}
 			</div>}
 			<Stack
+				span
 				className={`${componentClassName}-content`}
-				direction="vertical"
+				direction={direction}
 				gap={gap}
 			>
 				{children}

@@ -1,24 +1,23 @@
 import classnames from 'classnames'
 import { forwardRef, memo, ReactNode } from 'react'
 import { useClassNamePrefix } from '../../auxiliary'
-import type { BoxDistinction, Default, Intent, NativeProps, Size } from '../../types'
-import { toEnumViewClass, toStateClass, toThemeClass } from '../../utils'
-import { Stack, StackProps } from '../Stack'
+import type { BoxDistinction, Default, Intent, NativeProps } from '../../types'
+import { toEnumViewClass, toStateClass } from '../../utils'
+import { Stack } from '../Stack'
 import { Label } from '../Typography/Label'
+import { View, ViewContainerProps, ViewProps } from '../View'
 
-export interface BoxOwnProps {
+export interface BoxOwnProps extends Omit<ViewProps, 'theme' | 'themeContent' | 'themeControls' | 'padding'> {
 	actions?: ReactNode
-	children?: ReactNode
+	children?: ViewContainerProps['children']
 	distinction?: BoxDistinction
-	direction?: StackProps['direction']
-	gap?: Size | 'none'
 	heading?: ReactNode
 	isActive?: boolean
 	intent?: Intent
 	padding?: Default | 'no-padding' | 'with-padding'
 }
 
-export interface BoxProps extends BoxOwnProps, Omit<NativeProps<HTMLDivElement>, 'children'> {}
+export interface BoxProps extends BoxOwnProps, Omit<ViewContainerProps, 'children'> {}
 
 export const Box = memo(
 	forwardRef<HTMLDivElement, BoxProps>(
@@ -28,42 +27,52 @@ export const Box = memo(
 			className,
 			direction = 'vertical',
 			distinction,
-			gap = 'small',
+			gap = true,
 			heading,
 			intent,
 			isActive,
+			backgroundColor = true,
+			purpose = 'above',
 			padding,
-			...divProps
+			...rest
 		}: BoxProps, ref) => {
 			const componentClassName = `${useClassNamePrefix()}box`
 
 			return (
-				<div
-					{...divProps}
+				<View
+					{...rest}
+					theme={intent}
+					themeContent={intent}
+					themeControls={intent}
+					backgroundColor={backgroundColor}
+					purpose={purpose}
 					className={classnames(
 						componentClassName,
 						toStateClass('active', isActive),
 						toEnumViewClass(distinction),
-						toThemeClass(intent, intent),
 						toEnumViewClass(padding),
 						className,
 					)}
 					ref={ref}
 				>
-					<Stack gap={gap} direction={direction}>
+					<Stack
+						gap={gap}
+						direction={direction}
+						className={`${componentClassName}-container`}
+					>
 						{(heading || actions) && (
-							<div className={`${componentClassName}-header`}>
+							<View className={`${componentClassName}-header`}>
 								{heading && <Label>{heading}</Label>}
 								{actions && (
-									<div className={`${componentClassName}-actions`} contentEditable={false}>
+									<View className={`${componentClassName}-actions`} contentEditable={false}>
 										{actions}
-									</div>
+									</View>
 								)}
-							</div>
+							</View>
 						)}
 						{children}
 					</Stack>
-				</div>
+				</View>
 			)
 		},
 	),

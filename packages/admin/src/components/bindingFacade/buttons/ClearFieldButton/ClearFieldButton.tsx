@@ -1,7 +1,7 @@
 import { SimpleRelativeSingleField, SimpleRelativeSingleFieldProps } from '../../auxiliary'
 import { ClearFieldButtonInner, ClearFieldButtonInnerPublicProps } from './ClearFieldButtonInner'
 
-export type ClearFieldButtonProps = Omit<ClearFieldButtonInnerPublicProps, 'defaultValue'> &
+export type ClearFieldButtonProps = Omit<ClearFieldButtonInnerPublicProps, 'defaultValue' | 'elevation'> &
 	SimpleRelativeSingleFieldProps
 
 export const ClearFieldButton = SimpleRelativeSingleField<ClearFieldButtonProps>(

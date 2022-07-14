@@ -12,7 +12,7 @@ export const Layout = (props: { children?: ReactNode }) => (
 				dimension="locale"
 				labelField="code"
 				slugField="code"
-				maxItems={1}
+				maxItems={3}
 			/>
 			{/*<DimensionsSwitcher*/}
 			{/*	optionEntities="LocaleDialect[locale.code = $locale]"*/}

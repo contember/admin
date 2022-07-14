@@ -8,6 +8,37 @@
 	&.view-sortable
 		--cui-box-content-padding-left: calc(2 * var(--cui-box-content-padding))
 
+	&.is-compact
+		min-width: max-content
+		&:not(.view-sortable.is-active)
+			border: 0
+			border-radius: 0
+		.#{$cui-conf-globalPrefix}view-direction\:vertical > &:first-of-type
+			border-top-left-radius: var(--cui-control-border-radius)
+			border-top-right-radius: var(--cui-control-border-radius)
+		.#{$cui-conf-globalPrefix}view-direction\:vertical > &:last-of-type
+			border-bottom-left-radius: var(--cui-control-border-radius)
+			border-bottom-right-radius: var(--cui-control-border-radius)
+		.#{$cui-conf-globalPrefix}view-direction\:horizontal > &:first-of-type
+			border-bottom-left-radius: var(--cui-control-border-radius)
+			border-top-left-radius: var(--cui-control-border-radius)
+		.#{$cui-conf-globalPrefix}view-direction\:horizontal > &:last-of-type
+			border-bottom-right-radius: var(--cui-control-border-radius)
+			border-top-right-radius: var(--cui-control-border-radius)
+
+	&-content.view-horizontal
+		min-width: min-content
+		@media (min-width: $breakpoint-min-small)
+			flex-direction: row
+			flex-wrap: nowrap
+			min-width: max-content
+		& > *
+			flex-grow: 1
+			flex-basis: auto
+			max-width: 100%
+			@media (min-width: $breakpoint-min-small)
+				flex-basis: 0%
+
 	&-header
 		display: flex
 		justify-content: space-between
@@ -25,10 +56,15 @@
 		bottom: 0
 		padding: var(--cui-box-content-padding) 0
 		width: calc(2 * var(--cui-box-content-padding))
+		user-select: none
 
 	&-label
 		font-weight: 800
+		user-select: none
 	&-actions
+		display: flex
+		column-gap: var(--cui-gap-horizontal)
+		row-gap: var(--cui-gap-vertical)
 		margin-left: .5em
 		margin-right: -.5em
 		margin-top: -.5em

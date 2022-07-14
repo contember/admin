@@ -4,9 +4,8 @@ import { useClassNamePrefix } from '../../auxiliary'
 import { toSchemeClass, toThemeClass } from '../../utils'
 import { ButtonList } from '../Forms'
 import { LayoutPageStickyContainer } from '../Layout/LayoutPageStickyContainer'
-import { useThemeScheme, useTitleThemeScheme } from '../Layout/ThemeSchemeContext'
-import type { ThemeScheme } from '../Layout/Types'
 import { Heading, HeadingProps } from '../Typography/Heading'
+import { ThemeScheme, useThemeScheme, useTitleThemeScheme } from '../View'
 
 export interface TitleBarProps extends ThemeScheme {
 	after?: ReactNode

@@ -1,82 +1,43 @@
 import classnames from 'classnames'
-import { CSSProperties, forwardRef, memo, ReactNode, useMemo } from 'react'
-import { useClassNamePrefix } from '../../auxiliary'
-import type { NativeProps, Size } from '../../types'
-import { toEnumClass, toEnumViewClass, toStateClass, toViewClass } from '../../utils'
+import { forwardRef, memo } from 'react'
+import { useComponentClassName } from '../../auxiliary'
+import { NativeProps } from '../../types'
+import { toStateClass } from '../../utils'
+import { View, ViewProps } from '../View'
 
-export interface StackOwnProps {
-	align?: 'center' | 'stretch' | 'start' | 'end',
-	basis?: CSSProperties['flexBasis'],
-	children?: ReactNode,
-	direction: 'vertical' | 'horizontal' | 'vertical-reverse' | 'horizontal-reverse',
-	evenly?: boolean,
-	gap?: Size | 'xlarge' | 'none',
-	grow?: boolean | CSSProperties['flexGrow'],
-	justify?:
-		| 'center'
-		| 'start'
-		| 'end'
-		| 'space-between'
-		| 'space-around'
-		| 'space-evenly'
-		| 'stretch'
-		| 'inherit'
-		| 'initial'
-		| 'revert'
-	shrink?: boolean | CSSProperties['flexShrink'],
-	style?: NativeProps<HTMLDivElement>['style'],
-	wrap?: boolean | 'reverse',
+export type StackOwnProps = Omit<ViewProps, 'display' | 'spanRows' | 'direction'> & {
+	direction: ViewProps['direction']
+	evenly?: boolean
 }
 
-export interface StackProps extends StackOwnProps, Omit<NativeProps<HTMLDivElement>, 'children'> {}
+export type StackProps = StackOwnProps & NativeProps<HTMLDivElement>
 
 export const Stack = memo(
 	forwardRef<HTMLDivElement, StackProps>(
 		({
-			align,
-			basis,
-			evenly,
 			children,
 			className,
-			direction,
-			gap,
-			grow,
-			justify,
-			shrink,
-			style: styleProp,
-			wrap,
-			...rest
+			evenly,
+			gap = true,
+			...props
 		}: StackProps, ref) => {
-			const prefix = useClassNamePrefix()
-
-			const style: CSSProperties = useMemo(() => ({
-				...{ flexBasis: basis },
-				...(typeof grow !== 'boolean' ? { flexGrow: grow } : {}),
-				...(typeof shrink !== 'boolean' ? { flexShrink: shrink } : {}),
-				...styleProp,
-			}), [basis, grow, shrink, styleProp])
+			const componentClassName = useComponentClassName('stack')
 
 			return <>
 				{children && (
-					<div
-						{...rest}
+					<View
+						{...props}
+						gap={gap}
+						display="flex"
 						className={classnames(
-							`${prefix}stack`,
-							toViewClass(`${direction}`, true),
+							`${componentClassName}`,
 							toStateClass('evenly-distributed', evenly),
-							toEnumClass('gap-', gap),
-							align && toEnumViewClass(`align-${align}`),
-							grow === true && toEnumViewClass('grow'),
-							justify && toEnumViewClass(`justify-${justify}`),
-							shrink === true && toEnumViewClass('shrink'),
-							wrap && toEnumViewClass(wrap === true ? `wrap` : `wrap-${wrap}`),
 							className,
 						)}
-						style={style}
 						ref={ref}
 					>
 						{children}
-					</div>
+					</View>
 				)}
 			</>
 		},
