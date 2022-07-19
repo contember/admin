@@ -2694,10 +2694,12 @@ export type MultiEditPageProps<ContainerExtraProps, ItemExtraProps> = SugaredQua
 export const MultiSelectField: FunctionComponent<MultiSelectFieldProps>;
 
 // @public (undocumented)
-export const MultiSelectFieldInner: <T extends unknown>({ currentValues, data, errors, onAdd, onClear, onRemove, reactSelectProps, placeholder, onAddNew, onMove, onSearch, isLoading, ...fieldContainerProps }: MultiSelectFieldInnerProps<T>) => JSX.Element;
+export const MultiSelectFieldInner: <T extends unknown>({ currentValues, data, errors, onAdd, onClear, onRemove, reactSelectProps, placeholder, menuZIndex, onAddNew, onMove, onSearch, isLoading, ...fieldContainerProps }: MultiSelectFieldInnerProps<T>) => JSX.Element;
 
+// Warning: (ae-forgotten-export) The symbol "CommonReactSelectStylesProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface MultiSelectFieldInnerProps<ActualValue> extends ChoiceFieldData.MultipleChoiceFieldMetadata<ActualValue>, MultiSelectFieldInnerPublicProps {
+export interface MultiSelectFieldInnerProps<ActualValue> extends ChoiceFieldData.MultipleChoiceFieldMetadata<ActualValue>, MultiSelectFieldInnerPublicProps, Pick<CommonReactSelectStylesProps, 'menuZIndex'> {
     // (undocumented)
     errors: FieldErrors | undefined;
 }
@@ -3574,10 +3576,10 @@ export interface SelectEntityButtonProps {
 export const SelectField: FunctionComponent<SelectFieldProps>;
 
 // @public (undocumented)
-export const SelectFieldInner: MemoExoticComponent<({ placeholder, allowNull, currentValue, data, errors, onSelect, onClear, reactSelectProps, onAddNew, onSearch, isLoading, ...fieldContainerProps }: SelectFieldInnerProps) => JSX.Element>;
+export const SelectFieldInner: MemoExoticComponent<({ placeholder, allowNull, currentValue, data, errors, menuZIndex, onSelect, onClear, reactSelectProps, onAddNew, onSearch, isLoading, ...fieldContainerProps }: SelectFieldInnerProps) => JSX.Element>;
 
 // @public (undocumented)
-export interface SelectFieldInnerProps extends ChoiceFieldData.SingleChoiceFieldMetadata, SelectFieldInnerPublicProps {
+export interface SelectFieldInnerProps extends ChoiceFieldData.SingleChoiceFieldMetadata, SelectFieldInnerPublicProps, Pick<CommonReactSelectStylesProps, 'menuZIndex'> {
     // (undocumented)
     errors: FieldErrors | undefined;
 }

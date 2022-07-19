@@ -1,8 +1,16 @@
-import type { StylesConfig } from 'react-select'
 import { useMemo } from 'react'
+import type { StylesConfig } from 'react-select'
+
+export type CommonReactSelectStylesProps = {
+	isInvalid?: boolean
+	/**
+	 * Use to set z-index of the drop-down menu in portal
+	 */
+	menuZIndex?: 'unset' | number
+}
 
 // TODO: Not yet finished with all styles
-export const useCommonStyles = (isInvalid: boolean): StylesConfig<any, boolean, never> => useMemo(() => ({
+export const useCommonReactSelectStyles = ({ isInvalid = false, menuZIndex = 'unset' }: CommonReactSelectStylesProps): StylesConfig<any, boolean, never> => useMemo(() => ({
 	indicatorSeparator: (provided, { isFocused, isDisabled }) => {
 		const backgroundColor = isDisabled
 			? 'var(--cui-color--lower)'
@@ -95,8 +103,8 @@ export const useCommonStyles = (isInvalid: boolean): StylesConfig<any, boolean, 
 		return {
 			...provided,
 			'color': isFocused
-					? 'var(--cui-color--strong)'
-					: 'var(--cui-color--high)',
+				? 'var(--cui-color--strong)'
+				: 'var(--cui-color--high)',
 			'&:hover': {
 				color: 'var(--cui-color--strong)',
 			},
@@ -144,6 +152,20 @@ export const useCommonStyles = (isInvalid: boolean): StylesConfig<any, boolean, 
 			border,
 		}
 	},
+	menuList: (provided, props) => {
+		return {
+			...provided,
+			zIndex: menuZIndex,
+			isolation: 'isolate',
+		}
+	},
+	menuPortal: (provided, props) => {
+		return {
+			...provided,
+			zIndex: menuZIndex,
+			isolation: 'isolate',
+		}
+	},
 	option: (provided, { isFocused, isSelected }) => {
 		const color = isFocused
 			? 'var(--cui-filled-control-color)'
@@ -174,4 +196,4 @@ export const useCommonStyles = (isInvalid: boolean): StylesConfig<any, boolean, 
 			display: 'flex',
 		}
 	},
-}), [isInvalid])
+}), [isInvalid, menuZIndex])
