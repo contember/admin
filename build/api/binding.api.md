@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ComponentType } from 'react';
-import { Context } from 'react';
 import type { CrudQueryBuilder } from '@contember/client';
 import { EmbeddedActionsParser } from 'chevrotain';
 import { FunctionComponent } from 'react';
@@ -217,7 +216,7 @@ export interface DataBindingStateComponentProps {
 }
 
 // @public (undocumented)
-export const DeferredSubTrees: NamedExoticComponent<DeferredSubTreesProps>;
+export const DeferredSubTrees: React.NamedExoticComponent<DeferredSubTreesProps>;
 
 // @public (undocumented)
 export interface DeferredSubTreesProps {
@@ -228,10 +227,10 @@ export interface DeferredSubTreesProps {
 }
 
 // @public (undocumented)
-export const DirtinessContext: Context<boolean>;
+export const DirtinessContext: React.Context<boolean>;
 
 // @public (undocumented)
-export const Entity: NamedExoticComponent<EntityBaseProps>;
+export const Entity: React.NamedExoticComponent<EntityBaseProps>;
 
 // @public (undocumented)
 export class EntityAccessor implements Errorable {
@@ -678,6 +677,8 @@ export class Environment {
     // (undocumented)
     getDimensionOrElse<F>(dimensionName: string, fallback: F): string[] | F;
     // (undocumented)
+    getExtension<S, R>(extension: Environment.Extension<S, R>): R;
+    // (undocumented)
     getParameter<F>(key: string): string | number;
     // (undocumented)
     getParameterOrElse<F>(key: string, fallback: F): string | number | F;
@@ -713,6 +714,8 @@ export class Environment {
     merge(other: Environment): Environment;
     // (undocumented)
     withDimensions(dimensions: Environment.SelectedDimensions): Environment;
+    // (undocumented)
+    withExtension<S, R>(extension: Environment.Extension<S, R>, state: S): Environment;
     // (undocumented)
     withParameters(parameters: Environment.Parameters): Environment;
     // (undocumented)
@@ -770,6 +773,10 @@ export namespace Environment {
         type: 'entity';
     }
     // (undocumented)
+    export type Extension<State, Result> = {
+        create: (state: State | undefined, environment: Environment) => Result;
+    };
+    // (undocumented)
     export type InnerNode = EntityNode | EntityListNode | ColumnNode;
     // (undocumented)
     export type Name = string;
@@ -777,6 +784,8 @@ export namespace Environment {
     export interface Options {
         // (undocumented)
         dimensions: SelectedDimensions;
+        // (undocumented)
+        extensions: Map<Extension<any, any>, any>;
         // (undocumented)
         node?: AnyNode;
         // (undocumented)
@@ -827,6 +836,8 @@ export namespace Environment {
     export type SubTreeNode = SubTreeEntityNode | SubTreeEntityListNode;
     // (undocumented)
     export type Value = ReactNode;
+    const // (undocumented)
+    createExtension: <S, R>(create: (state: S | undefined, environment: Environment) => R, otherMethods?: Omit<Extension<S, R>, "create"> | undefined) => Extension<S, R>;
     // (undocumented)
     export interface ValuesMapWithFactory {
         // (undocumented)
@@ -835,12 +846,36 @@ export namespace Environment {
 }
 
 // @public (undocumented)
-export const EnvironmentContext: Context<Environment>;
+export const EnvironmentContext: React.Context<Environment>;
 
 // @public (undocumented)
 export interface EnvironmentDeltaProvider<Props extends {} = any> {
     // (undocumented)
     generateEnvironment: (props: Props, oldEnvironment: Environment) => Environment;
+}
+
+// @public (undocumented)
+export const EnvironmentExtensionProvider: <S, R>(props: EnvironmentWithExtensionProps<S, R>) => ReactElement | null;
+
+// @public (undocumented)
+export const EnvironmentMiddleware: React.NamedExoticComponent<EnvironmentMiddlewareProps>;
+
+// @public (undocumented)
+export interface EnvironmentMiddlewareProps {
+    // (undocumented)
+    children: ReactNode;
+    // (undocumented)
+    create: (env: Environment) => Environment;
+}
+
+// @public (undocumented)
+export interface EnvironmentWithExtensionProps<S, R> {
+    // (undocumented)
+    children: ReactNode;
+    // (undocumented)
+    extension: Environment.Extension<S, R>;
+    // (undocumented)
+    state: S;
 }
 
 // @public (undocumented)
@@ -1236,7 +1271,7 @@ export class HasOneRelationMarker {
 }
 
 // @public (undocumented)
-export const If: NamedExoticComponent<IfProps>;
+export const If: React.NamedExoticComponent<IfProps>;
 
 // @public (undocumented)
 export interface IfCallbackProps {
@@ -1469,7 +1504,7 @@ export interface MutationResponse {
 }
 
 // @public (undocumented)
-export const MutationStateContext: Context<boolean>;
+export const MutationStateContext: React.Context<boolean>;
 
 // @public (undocumented)
 export interface MutationTransactionResponse {
@@ -1515,7 +1550,7 @@ export type OptionallyVariableFieldValue = FieldValue | VariableFieldValue;
 export type OrderBy = Input.OrderBy<CrudQueryBuilder.OrderDirection>[];
 
 // @public (undocumented)
-export const ParentEntity: NamedExoticComponent<ParentEntityProps>;
+export const ParentEntity: React.NamedExoticComponent<ParentEntityProps>;
 
 // @public (undocumented)
 export class ParentEntityMarker {
@@ -1854,7 +1889,7 @@ export class ServerId implements RuntimeIdSpec {
 export type SetOnCreate = UniqueWhere | undefined;
 
 // @public (undocumented)
-export const SetOrderFieldOnCreate: NamedExoticComponent<SetOrderFieldOnCreateProps>;
+export const SetOrderFieldOnCreate: React.NamedExoticComponent<SetOrderFieldOnCreateProps>;
 
 // @public (undocumented)
 export interface SetOrderFieldOnCreateOwnProps {
@@ -1901,7 +1936,7 @@ export interface SortedEntities {
 export const sortEntities: (entities: EntityAccessor[], sortByField: RelativeSingleField | undefined) => EntityAccessor[];
 
 // @public (undocumented)
-export const StaticRender: NamedExoticComponent<StaticRenderProps>;
+export const StaticRender: React.NamedExoticComponent<StaticRenderProps>;
 
 // @public (undocumented)
 export interface StaticRenderProps {
